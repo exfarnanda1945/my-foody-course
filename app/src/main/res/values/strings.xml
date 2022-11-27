@@ -13,4 +13,6 @@
     <string name="favorite">favorite</string>
     <string name="clock">clock</string>
     <string name="vegan">vegan</string>
+    <string name="food_joke_fragment">Food Joke Fragment</string>
+    <string name="favorite_recipes_fragment">Favorite Recipes Fragment</string>
 </resources>
