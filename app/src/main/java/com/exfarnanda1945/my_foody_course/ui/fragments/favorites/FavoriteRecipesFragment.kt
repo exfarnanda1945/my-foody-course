@@ -1,10 +1,11 @@
-package com.exfarnanda1945.my_foody_course
+package com.exfarnanda1945.my_foody_course.ui.fragments.favorites
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.exfarnanda1945.my_foody_course.R
 
 class FavoriteRecipesFragment : Fragment() {
     override fun onCreateView(
