@@ -1,4 +1,4 @@
-package com.exfarnanda1945.my_foody_course
+package com.exfarnanda1945.my_foody_course.ui.fragments.recipes
 
 import android.os.Bundle
 import android.view.LayoutInflater
