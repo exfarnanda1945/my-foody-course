@@ -1,4 +1,4 @@
-package com.exfarnanda1945.my_foody_course
+package com.exfarnanda1945.my_foody_course.data.network
 
 import com.exfarnanda1945.my_foody_course.model.FoodRecipe
 import retrofit2.Response
