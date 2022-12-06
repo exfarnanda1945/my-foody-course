@@ -1,143 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/recipes_row_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginVertical="4dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/row_cardview"
-        android:layout_width="0dp"
+    <data>
+
+        <variable
+            name="result"
+            type="com.exfarnanda1945.my_foody_course.model.ResultsItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recipes_row_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:strokeColor="@color/mediumGray"
-        app:strokeWidth="1dp">
+        android:layout_marginVertical="4dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/row_cardview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:strokeColor="@color/mediumGray"
+            app:strokeWidth="1dp">
 
-            <ImageView
-                android:id="@+id/recipe_img"
-                android:layout_width="200dp"
-                android:layout_height="0dp"
-                android:contentDescription="@string/recipe_image"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
 
-            <TextView
-                android:id="@+id/title_tv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="12dp"
-                android:ellipsize="end"
-                android:fontFamily="@font/courgette"
-                android:maxLines="2"
-                android:text="@string/indomie_rendang"
-                android:textColor="@color/darker"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.078"
-                app:layout_constraintStart_toEndOf="@+id/recipe_img"
-                app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/recipe_img"
+                    loadImageFromUrl="@{result.image}"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    android:contentDescription="@string/recipe_image"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
-                android:id="@+id/description_tv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:ellipsize="end"
-                android:maxLines="3"
-                android:text="@string/lorem_ipsum"
-                android:textColor="@color/darkGray"
-                app:layout_constraintEnd_toEndOf="@+id/title_tv"
-                app:layout_constraintStart_toStartOf="@+id/title_tv"
-                app:layout_constraintTop_toBottomOf="@+id/title_tv" />
+                <TextView
+                    android:id="@+id/title_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/courgette"
+                    android:maxLines="2"
+                    android:text="@{result.title}"
+                    android:textColor="@color/darker"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.078"
+                    app:layout_constraintStart_toEndOf="@+id/recipe_img"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/favorite_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                app:tint="@color/red"
-                android:layout_marginBottom="36dp"
-                android:contentDescription="@string/favorite"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/favorite_tv"
-                app:layout_constraintStart_toStartOf="@+id/favorite_tv"
-                app:layout_constraintTop_toBottomOf="@+id/description_tv"
-                app:srcCompat="@drawable/ic_favorite" />
+                <TextView
+                    android:id="@+id/description_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="@{result.summary}"
+                    android:textColor="@color/darkGray"
+                    app:layout_constraintEnd_toEndOf="@+id/title_tv"
+                    app:layout_constraintStart_toStartOf="@+id/title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/title_tv" />
 
-            <TextView
-                android:id="@+id/favorite_tv"
-                android:textColor="@color/red"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/funny_number"
-                android:textAlignment="center"
-                app:layout_constraintStart_toStartOf="@+id/description_tv"
-                app:layout_constraintTop_toBottomOf="@+id/favorite_img" />
+                <ImageView
+                    android:id="@+id/favorite_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="36dp"
+                    android:contentDescription="@string/favorite"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/favorite_tv"
+                    app:layout_constraintStart_toStartOf="@+id/favorite_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/description_tv"
+                    app:srcCompat="@drawable/ic_favorite"
+                    app:tint="@color/red" />
 
-            <ImageView
-                android:id="@+id/clock_img"
-                app:tint="@color/yellow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/clock"
-                app:layout_constraintEnd_toEndOf="@+id/clock_tv"
-                app:layout_constraintStart_toStartOf="@+id/clock_tv"
-                app:layout_constraintTop_toTopOf="@+id/favorite_img"
-                app:srcCompat="@drawable/ic_clock" />
+                <TextView
+                    android:id="@+id/favorite_tv"
+                    setNumberOfLikes="@{result.aggregateLikes}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/red"
+                    app:layout_constraintStart_toStartOf="@+id/description_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/favorite_img" />
 
-            <TextView
-                android:textColor="@color/yellow"
-                android:id="@+id/clock_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="@string/funny_number"
-                android:textAlignment="center"
-                app:layout_constraintStart_toEndOf="@+id/favorite_tv"
-                app:layout_constraintTop_toBottomOf="@+id/clock_img" />
+                <ImageView
+                    android:id="@+id/clock_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/clock"
+                    app:layout_constraintEnd_toEndOf="@+id/clock_tv"
+                    app:layout_constraintStart_toStartOf="@+id/clock_tv"
+                    app:layout_constraintTop_toTopOf="@+id/favorite_img"
+                    app:srcCompat="@drawable/ic_clock"
+                    app:tint="@color/yellow" />
 
-            <ImageView
-                android:id="@+id/vegan_img"
-                app:tint="@color/green"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/vegan"
-                app:layout_constraintEnd_toEndOf="@+id/vegan_tv"
-                app:layout_constraintStart_toStartOf="@+id/vegan_tv"
-                app:layout_constraintTop_toTopOf="@+id/clock_img"
-                app:srcCompat="@drawable/ic_vegan" />
+                <TextView
+                    android:id="@+id/clock_tv"
+                    setNumberOfMinutes="@{result.readyInMinutes}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"
+                    app:layout_constraintStart_toEndOf="@+id/favorite_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/clock_img" />
 
-            <TextView
-                android:id="@+id/vegan_tv"
-                android:textColor="@color/green"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="@string/funny_number"
-                android:textAlignment="center"
-                app:layout_constraintStart_toEndOf="@+id/clock_tv"
-                app:layout_constraintTop_toBottomOf="@+id/vegan_img" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/vegan_img"
+                    applyIsVegan="@{result.vegan}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/vegan"
+                    app:layout_constraintEnd_toEndOf="@+id/vegan_tv"
+                    app:layout_constraintStart_toStartOf="@+id/vegan_tv"
+                    app:layout_constraintTop_toTopOf="@+id/clock_img"
+                    app:srcCompat="@drawable/ic_vegan" />
 
-    </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:id="@+id/vegan_tv"
+                    applyIsVegan="@{result.vegan}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="@string/vegan"
+                    android:textAlignment="center"
+                    app:layout_constraintStart_toEndOf="@+id/clock_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/vegan_img" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
