@@ -8,13 +8,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.exfarnanda1945.my_foody_course.adapter.RecipeAdapter
 import com.exfarnanda1945.my_foody_course.databinding.FragmentRecipesBinding
 import com.exfarnanda1945.my_foody_course.util.NetworkResult
+import com.exfarnanda1945.my_foody_course.util.observerOnce
 import com.exfarnanda1945.my_foody_course.viewmodels.MainViewModel
 import com.exfarnanda1945.my_foody_course.viewmodels.RecipeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
@@ -33,9 +36,22 @@ class RecipesFragment : Fragment() {
         val view = binding.root
 
         setupRecyclerView()
-        getRecipesData()
+        readDatabase()
 
         return view
+    }
+
+    private fun readDatabase() {
+        lifecycleScope.launch {
+            mainViewModel.readRecipe.observerOnce(viewLifecycleOwner) { database ->
+                if (database.isNotEmpty()) {
+                    mAdapter.setData(database[0].foodRecipe.results)
+                    handleShimmerEffect(false)
+                } else {
+                    requestApiData()
+                }
+            }
+        }
     }
 
     private fun setupRecyclerView() {
@@ -46,7 +62,7 @@ class RecipesFragment : Fragment() {
         }
     }
 
-    private fun getRecipesData() {
+    private fun requestApiData() {
         mainViewModel.getRecipes(recipeViewModel.applyQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -56,12 +72,21 @@ class RecipesFragment : Fragment() {
                 }
                 is NetworkResult.Error -> {
                     handleShimmerEffect(false)
+                    loadDataFromCache()
                     Toast.makeText(requireContext(), response.msg.toString(), Toast.LENGTH_SHORT)
                         .show()
                 }
                 is NetworkResult.Loading -> {
                     handleShimmerEffect(true)
                 }
+            }
+        }
+    }
+
+    private fun loadDataFromCache() {
+        lifecycleScope.launch {
+            mainViewModel.readRecipe.observe(viewLifecycleOwner) { database ->
+                mAdapter.setData(database[0].foodRecipe.results)
             }
         }
     }
