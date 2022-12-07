@@ -13,7 +13,9 @@ object RecipeRowLayoutBindingAdapter {
     @BindingAdapter("loadImageFromUrl")
     @JvmStatic
     fun loadImageFromUrl(imageView: ImageView, imgUrl: String) {
-        Glide.with(imageView.context).load(imgUrl).placeholder(R.drawable.default_placeholder)
+        val placeHolderDrawable = R.drawable.default_placeholder
+        Glide.with(imageView.context).load(imgUrl).placeholder(placeHolderDrawable)
+            .error(placeHolderDrawable)
             .into(imageView)
     }
 
