@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id "androidx.navigation.safeargs"
+    id "androidx.navigation.safeargs.kotlin"
     id "kotlin-kapt"
     id "com.google.dagger.hilt.android"
     id "kotlin-parcelize"
@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.exfarnanda1945.my_foody_course"
-        minSdk 23
+        minSdk 24
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -35,7 +35,7 @@ android {
         jvmTarget = '1.8'
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
         dataBinding = true
     }
@@ -101,11 +101,13 @@ dependencies {
     implementation 'com.github.omtodkar:ShimmerRecyclerView:0.4.1'
 
     //ViewModel
-    implementation "androidx.fragment:fragment-ktx:1.5.4"
+    implementation "androidx.fragment:fragment-ktx:1.5.5"
     implementation "androidx.activity:activity-ktx:1.6.1"
 
     //Jsoup
     implementation("org.jsoup:jsoup:1.14.3")
+
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 }
 
 kapt {
