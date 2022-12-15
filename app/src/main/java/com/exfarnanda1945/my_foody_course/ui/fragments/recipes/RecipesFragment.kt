@@ -160,7 +160,7 @@ class RecipesFragment : Fragment() {
         handleShimmerEffect(true)
         mainViewModel.apply {
             searchRecipes(recipeViewModel.applySearchQueries(query))
-            recipesResponse.observe(viewLifecycleOwner) { response ->
+            searchRecipesResponse.observe(viewLifecycleOwner) { response ->
                 when (response) {
                     is NetworkResult.Success -> {
                         handleShimmerEffect(false)
