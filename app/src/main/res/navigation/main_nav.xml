@@ -26,7 +26,11 @@
         android:id="@+id/favoriteRecipesFragment"
         android:name="com.exfarnanda1945.my_foody_course.ui.fragments.favorites.FavoriteRecipesFragment"
         android:label="Favorites"
-        tools:layout="@layout/fragment_favorite_recipes" />
+        tools:layout="@layout/fragment_favorite_recipes" >
+        <action
+            android:id="@+id/action_favoriteRecipesFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
+    </fragment>
     <fragment
         android:id="@+id/foodJokeFragment"
         android:name="com.exfarnanda1945.my_foody_course.ui.fragments.jokes.FoodJokeFragment"
@@ -39,7 +43,9 @@
         tools:layout="@layout/recipes_bottom_sheet">
         <action
             android:id="@+id/action_recipesBottomSheet_to_recipesFragment"
-            app:destination="@id/recipesFragment" />
+            app:destination="@id/recipesFragment"
+            app:popUpTo="@id/recipesFragment"
+            app:popUpToInclusive="true" />
     </dialog>
     <activity
         android:id="@+id/detailsActivity"
