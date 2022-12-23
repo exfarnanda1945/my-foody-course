@@ -14,7 +14,7 @@ import com.exfarnanda1945.my_foody_course.util.Constants.PREFERENCES_MEAL_TYPE
 import com.exfarnanda1945.my_foody_course.util.Constants.PREFERENCES_MEAL_TYPE_ID
 import com.exfarnanda1945.my_foody_course.util.Constants.PREFERENCES_NAME
 import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -22,7 +22,7 @@ import javax.inject.Inject
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = PREFERENCES_NAME)
 
-@ActivityRetainedScoped
+@ViewModelScoped
 class DataStoreRepository @Inject constructor(@ApplicationContext private val context: Context) {
 
     // initialize preferences key
