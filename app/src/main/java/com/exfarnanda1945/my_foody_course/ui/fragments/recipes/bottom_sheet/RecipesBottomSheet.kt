@@ -55,7 +55,7 @@ class RecipesBottomSheet : BottomSheetDialogFragment() {
                 dietTypeChipId = chipDietSelected.id
             }
             applyBtn.setOnClickListener {
-                recipesViewModel.saveMealAndDietType(
+                recipesViewModel.saveMealAndDietTypeTemp(
                     mealTypeChip,
                     mealTypeChipId,
                     dietTypeChip,
@@ -73,7 +73,9 @@ class RecipesBottomSheet : BottomSheetDialogFragment() {
 
     private fun updateCheckedChip(chipId: Int, chipGroup: ChipGroup) {
         if (chipId != 0) {
-            chipGroup.findViewById<Chip>(chipId).isChecked = true
+            val targetView =chipGroup.findViewById<Chip>(chipId)
+            targetView.isChecked = true
+            chipGroup.requestChildFocus(targetView,targetView)
         }
 
     }
