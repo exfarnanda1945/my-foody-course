@@ -1,4 +1,4 @@
-package com.exfarnanda1945.my_foody_course.data.database
+package com.exfarnanda1945.my_foody_course.data.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
