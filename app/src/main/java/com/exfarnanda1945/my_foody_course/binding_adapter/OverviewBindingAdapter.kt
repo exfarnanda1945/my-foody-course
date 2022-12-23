@@ -20,18 +20,6 @@ object OverviewBindingAdapter {
             .into(imgView)
     }
 
-    @BindingAdapter("setOverviewLikes")
-    @JvmStatic
-    fun setOverviewLikes(tv: TextView, value: Int) {
-        tv.text = value.toString()
-    }
-
-    @BindingAdapter("setOverviewMinutes")
-    @JvmStatic
-    fun setOverviewMinutes(tv: TextView, value: Int) {
-        tv.text = value.toString()
-    }
-
     @BindingAdapter("isVegan")
     @JvmStatic
     fun isVegan(view: View, isActive: Boolean) {
