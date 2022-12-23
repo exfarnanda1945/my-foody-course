@@ -1,43 +1,32 @@
 package com.exfarnanda1945.my_foody_course.binding_adapter
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
-import com.exfarnanda1945.my_foody_course.data.database.RecipesEntity
+import com.exfarnanda1945.my_foody_course.data.database.entities.RecipesEntity
 import com.exfarnanda1945.my_foody_course.model.FoodRecipe
 import com.exfarnanda1945.my_foody_course.util.NetworkResult
 
 object RecipeBindingAdapter {
 
-    @BindingAdapter("readApiResponse", "readDatabaseResponse", requireAll = true)
+    @BindingAdapter("readApiResponse","readDatabase", requireAll = true)
     @JvmStatic
-    fun errorImageViewVisibility(
-        imageView: ImageView,
+    fun handleReadDataError(
+        view: View,
         apiResponse: NetworkResult<FoodRecipe>?,
-        databaseResponse: List<RecipesEntity>?
+        database: List<RecipesEntity>?
     ) {
-        if (apiResponse is NetworkResult.Error && databaseResponse.isNullOrEmpty()) {
-            imageView.isVisible = true
-        } else if (apiResponse is NetworkResult.Loading || apiResponse is NetworkResult.Success) {
-            imageView.isVisible = false
+        when (view) {
+            is ImageView -> view.isVisible =
+                apiResponse is NetworkResult.Error && database.isNullOrEmpty()
+            is TextView -> {
+                view.isVisible = apiResponse is NetworkResult.Error && database.isNullOrEmpty()
+                view.text = apiResponse?.msg.toString()
+            }
+
         }
     }
 
-    @BindingAdapter("readApiResponse", "readDatabaseResponse", requireAll = true)
-    @JvmStatic
-    fun errorTextViewVisibility(
-        textView: TextView,
-        apiResponse: NetworkResult<FoodRecipe>?,
-        databaseResponse: List<RecipesEntity>?
-    ) {
-        if (apiResponse is NetworkResult.Error && databaseResponse.isNullOrEmpty()) {
-            textView.apply {
-                text = apiResponse.msg.toString()
-                isVisible = true
-            }
-        } else if (apiResponse is NetworkResult.Loading || apiResponse is NetworkResult.Success) {
-            textView.isVisible = false
-        }
-    }
 }

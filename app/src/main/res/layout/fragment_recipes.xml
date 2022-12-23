@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightGray"
+        android:background="@color/backgroundColor"
         tools:context=".ui.fragments.recipes.RecipesFragment">
 
         <com.todkars.shimmer.ShimmerRecyclerView
@@ -48,7 +48,7 @@
         <ImageView
             android:id="@+id/error_img"
             readApiResponse="@{mainViewModel.recipesResponse}"
-            readDatabaseResponse="@{mainViewModel.readRecipe}"
+            readDatabase="@{mainViewModel.readRecipe}"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:alpha="0.5"
@@ -65,7 +65,7 @@
         <TextView
             android:id="@+id/error_tv"
             readApiResponse="@{mainViewModel.recipesResponse}"
-            readDatabaseResponse="@{mainViewModel.readRecipe}"
+            readDatabase="@{mainViewModel.readRecipe}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

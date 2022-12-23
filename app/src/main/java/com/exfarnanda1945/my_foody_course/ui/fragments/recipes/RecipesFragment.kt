@@ -8,7 +8,6 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -30,7 +29,7 @@ class RecipesFragment : Fragment() {
     private var _binding: FragmentRecipesBinding? = null
     private val binding get() = _binding!!
 
-    private val mainViewModel by viewModels<MainViewModel>()
+    private val mainViewModel by activityViewModels<MainViewModel>()
     private val recipeViewModel by activityViewModels<RecipeViewModel>()
     private val mAdapter by lazy { RecipeAdapter() }
 
@@ -43,13 +42,13 @@ class RecipesFragment : Fragment() {
     ): View {
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
         val view = binding.root
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.mainViewModel = mainViewModel
 
         setupRecyclerView()
         setupSearchMenu()
 
         binding.apply {
-            lifecycleOwner = this@RecipesFragment
-            mainViewModel = mainViewModel
             recipesFab.setOnClickListener {
                 if (recipeViewModel.networkStatus) {
                     findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
@@ -63,7 +62,8 @@ class RecipesFragment : Fragment() {
             recipeViewModel.backOnline = it
         }
 
-        lifecycleScope.launch {
+        // start collect internet status when this fragment lifecycle state is created
+        lifecycleScope.launchWhenStarted {
             networkListener = NetworkListener()
             networkListener.checkNetworkCapabilities(requireContext()).collect { status ->
                 recipeViewModel.apply {
@@ -142,6 +142,7 @@ class RecipesFragment : Fragment() {
                 is NetworkResult.Success -> {
                     handleShimmerEffect(false)
                     response.data?.results.let { mAdapter.setData(it) }
+                    recipeViewModel.saveMealAndDietType()
                 }
                 is NetworkResult.Error -> {
                     handleShimmerEffect(false)
