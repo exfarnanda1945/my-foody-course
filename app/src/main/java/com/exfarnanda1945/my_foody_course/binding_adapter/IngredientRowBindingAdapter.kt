@@ -8,7 +8,7 @@ import com.exfarnanda1945.my_foody_course.R
 import com.exfarnanda1945.my_foody_course.util.Constants.BASE_IMAGE_URL
 import com.exfarnanda1945.my_foody_course.util.capitalized
 
-object IngredientBindingAdapter {
+object IngredientRowBindingAdapter {
     @BindingAdapter("loadIngredientImage")
     @JvmStatic
     fun loadIngredientImage(imgView: ImageView, fileName: String?) {
@@ -17,12 +17,6 @@ object IngredientBindingAdapter {
         Glide.with(imgView.context).load(url).placeholder(placeHolderDrawable)
             .error(placeHolderDrawable)
             .into(imgView)
-    }
-
-    @BindingAdapter("setIngredientAmount")
-    @JvmStatic
-    fun setIngredientAmount(tv: TextView, value: Double) {
-        tv.text = value.toString()
     }
 
     @BindingAdapter("setIngredientName")
