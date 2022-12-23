@@ -28,13 +28,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
-            app:strokeColor="@color/mediumGray"
+            app:strokeColor="@color/strokeColor"
             app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white">
+                android:background="@color/cardBackgroundColor">
 
                 <ImageView
                     android:id="@+id/recipe_img"
@@ -59,7 +59,7 @@
                     android:fontFamily="@font/courgette"
                     android:maxLines="2"
                     android:text="@{result.title}"
-                    android:textColor="@color/darker"
+                    android:textColor="@color/titleColor"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +75,7 @@
                     android:layout_marginTop="6dp"
                     android:ellipsize="end"
                     android:maxLines="3"
-                    android:textColor="@color/darkGray"
+                    android:textColor="@color/descriptionColor"
                     app:layout_constraintEnd_toEndOf="@+id/title_tv"
                     app:layout_constraintStart_toStartOf="@+id/title_tv"
                     app:layout_constraintTop_toBottomOf="@+id/title_tv" />
@@ -96,7 +96,7 @@
 
                 <TextView
                     android:id="@+id/favorite_tv"
-                    setNumberOfLikes="@{result.aggregateLikes}"
+                    android:text="@{String.valueOf(result.aggregateLikes)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
@@ -117,7 +117,7 @@
 
                 <TextView
                     android:id="@+id/clock_tv"
-                    setNumberOfMinutes="@{result.readyInMinutes}"
+                    android:text="@{String.valueOf(result.readyInMinutes)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -132,6 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/vegan"
+                    app:tint="@color/mediumGray"
                     app:layout_constraintEnd_toEndOf="@+id/vegan_tv"
                     app:layout_constraintStart_toStartOf="@+id/vegan_tv"
                     app:layout_constraintTop_toTopOf="@+id/clock_img"

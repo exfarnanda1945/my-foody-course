@@ -44,17 +44,6 @@ object RecipeRowLayoutBindingAdapter {
     *                    if want to set value with expression such Int,Boolean, you need to create binding adapter
     * Function binding adapter must have a view parameter. But in xml layout when called the function binding adapter,you only set a value from function
     * */
-    @BindingAdapter("setNumberOfLikes")
-    @JvmStatic
-    fun setNumberOfLikes(tv: TextView, likes: Int) {
-        tv.text = likes.toString()
-    }
-
-    @BindingAdapter("setNumberOfMinutes")
-    @JvmStatic
-    fun setNumberOfMinutes(tv: TextView, minutes: Int) {
-        tv.text = minutes.toString()
-    }
 
     // Because image and string parented by view, we need a parameter View for accessing image and string.
     @BindingAdapter("applyIsVegan")

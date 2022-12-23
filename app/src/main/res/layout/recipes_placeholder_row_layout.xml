@@ -9,7 +9,7 @@
         android:id="@+id/image_placeholder"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:background="@color/mediumGray"
+        android:background="@color/placeholderColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,7 +21,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
-        android:background="@color/mediumGray"
+        android:background="@color/placeholderColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/image_placeholder"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +31,7 @@
         android:layout_width="0dp"
         android:layout_height="65dp"
         android:layout_marginTop="12dp"
-        android:background="@color/mediumGray"
+        android:background="@color/placeholderColor"
         app:layout_constraintEnd_toEndOf="@+id/title_placeholder"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/title_placeholder"
@@ -42,7 +42,7 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginTop="12dp"
-        android:background="@color/mediumGray"
+        android:background="@color/placeholderColor"
         app:layout_constraintStart_toStartOf="@+id/description_placeholder"
         app:layout_constraintTop_toBottomOf="@+id/description_placeholder" />
 
@@ -51,7 +51,7 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="24dp"
-        android:background="@color/mediumGray"
+        android:background="@color/placeholderColor"
         app:layout_constraintStart_toEndOf="@+id/favorite_placeholder"
         app:layout_constraintTop_toTopOf="@+id/favorite_placeholder" />
 
@@ -60,7 +60,7 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="24dp"
-        android:background="@color/mediumGray"
+        android:background="@color/placeholderColor"
         app:layout_constraintStart_toEndOf="@+id/clock_placeholder"
         app:layout_constraintTop_toTopOf="@+id/clock_placeholder" />
 </androidx.constraintlayout.widget.ConstraintLayout>
