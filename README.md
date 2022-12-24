@@ -36,6 +36,7 @@ check here for screenshoot app https://postimg.cc/gallery/jRp9rMz
 - etc
 
 # Technology Used
+- MVVM Design Patern
 - Dependency Injection
 - Motion Layout
 - Data Binding
